@@ -1,0 +1,24 @@
+---
+import Nav from '@components/Nav.astro';
+import 'bootstrap/dist/css/bootstrap.css'
+//import { Breadcrumb } from 'astro-bootstrap';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Movies Astro</title>
+	</head>
+	<body>
+		<Nav />
+		<div class="container">
+			<slot />
+		</div>
+	</body>
+</html>
+

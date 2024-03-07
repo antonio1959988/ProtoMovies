@@ -1,0 +1,43 @@
+---
+import Layout from '@layouts/Layout.astro'
+import type { any } from 'astro/zod';
+
+const { id } = Astro.params
+
+const res = await fetch(
+    "https://api.themoviedb.org/3/movie/" + id + "?api_key=51b1043b2de7feb0defa5074cc511564&language=es-MX",
+);
+
+const data = await res.json();
+const poster_url = "https://image.tmdb.org/t/p/w500/"
+
+// Trailer
+const fetchVideo = await fetch("https://api.themoviedb.org/3/movie/"+ id +"/videos?language=es-MX&api_key=51b1043b2de7feb0defa5074cc511564")
+
+const trailer = await fetchVideo.json()
+const resVid = trailer.results.filter((p:any) => p.type === "Trailer")
+
+// Primer video a encontrar en el filtro con el type "Trailer"
+const video = resVid[0]
+const youtube = "https://www.youtube.com/embed/"
+---
+
+<Layout>
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <img src={poster_url + data.poster_path} alt="poster" class="img-fluid rounded-start">
+        </div>
+        <div class="col-md-8">
+            <h1><span class="badge text-bg-dark">{data.title}</span></h1>
+            <h4>{data.tagline}</h4>
+            <h2>Sinópsis</h2>
+            <p>{data.overview}</p>
+            <p><span class="badge text-bg-secondary">{data.release_date}</span></p>
+            <h1><span class="badge text-bg-danger">{Math.round(data.vote_average)}</span></h1>
+        </div>
+    </div>
+
+    <br>
+    <h1>Trailer</h1>
+    <iframe src={youtube + video?.key}  width="1280" height="720" allowfullscreen></iframe>
+</Layout>
