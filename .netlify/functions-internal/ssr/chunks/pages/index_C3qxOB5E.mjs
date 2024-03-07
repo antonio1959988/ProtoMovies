@@ -22,7 +22,7 @@ const $$Astro = createAstro();
 const $$Index = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Index;
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Search", Search, { "client:load": true, "client:component-hydration": "load", "client:component-path": "@components/Search.jsx", "client:component-export": "default" })} ${renderComponent($$result2, "Movies", $$Movies, {})} ` })}`;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Search", Search, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/Users/antoniotorres/Sites/ProtoMovies/src/components/Search.jsx", "client:component-export": "default" })} ${renderComponent($$result2, "Movies", $$Movies, {})} ` })}`;
 }, "/Users/antoniotorres/Sites/ProtoMovies/src/pages/index.astro", void 0);
 
 const $$file = "/Users/antoniotorres/Sites/ProtoMovies/src/pages/index.astro";
